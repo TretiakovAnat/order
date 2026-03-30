@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="order__wrapper">
+      <div class="cleaning-booking">
+        <h2>Замовити прибирання</h2>
+        <div class="calendar">
+          <div class="calendar-header">
+            <button id="prev">‹</button>
+            <div id="monthYear"></div>
+            <button id="next">›</button>
+          </div>
+
+          <div class="calendar-days">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Вс</div>
+          </div>
+
+          <div class="calendar-dates" id="dates"></div>
+        </div>
+        <form id="bookingForm">
+          <div class="field">
+            <input type="text" id="name" placeholder="Ваше ім'я" required />
+          </div>
+
+          <div class="field">
+            <input type="tel" id="phone" placeholder="Телефон" required />
+          </div>
+
+          <div class="field">
+            <select id="service">
+              <option value="">Тип прибирання</option>
+              <option value="1500">Підтримуюче</option>
+              <option value="3300">Генеральне</option>
+              <option value="4200">Після ремонту</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <select id="size">
+              <option value="">Площа житла</option>
+              <option value="1">до 50 м²</option>
+              <option value="1.4">50-80 м²</option>
+              <option value="1.8">80-120 м²</option>
+              <option value="2.2">120+ м²</option>
+            </select>
+          </div>
+
+          <strong>Додаткові послуги</strong>
+
+          <div class="extras-grid">
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="550" />
+              Чистка духової шафи +550 грн
+            </label>
+
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="550" />
+              Миття холодильника +550 грн
+            </label>
+
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="280" />
+              Чистка кондиціонера + 280 грн
+            </label>
+
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="250" />
+              Чистка радіатора парою 250 грн
+            </label>
+
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="1150" />
+              Хімчистка дивану +1150 грн
+            </label>
+
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+            <label class="extra-card">
+              <input type="checkbox" class="extra" value="300" />
+              Чистка блендера +300 грн
+            </label>
+          </div>
+        </form>
+
+        <div class="success" id="success"></div>
+      </div>
+      <div class="right">
+        <h2>Ваше замовлення</h2>
+
+        <p><strong>ім'я:</strong> <span id="order-name">—</span></p>
+        <p><strong>Телефон:</strong> <span id="order-phone">—</span></p>
+        <p><strong>Тип:</strong> <span id="order-service">—</span></p>
+        <p><strong>Площа:</strong> <span id="order-size">—</span></p>
+        <p><strong>Дата:</strong> <span id="order-date">—</span></p>
+
+        <div>
+          <strong>Доп послуги:</strong>
+          <ul id="order-services"></ul>
+        </div>
+
+        <p>
+          <strong>Приблизна вартість:</strong>
+          <span id="order-total">0 грн</span>
+        </p>
+
+        <button class="order-btn" type="submit" form="bookingForm">
+          Замовити
+        </button>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

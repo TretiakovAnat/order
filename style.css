@@ -1,0 +1,243 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* ❗ убираем скролл всей страницы */
+}
+.order__wrapper {
+  display: flex;
+}
+
+.busy {
+  background: #ccc !important;
+  color: #666;
+}
+
+.half {
+  background: #ffe58a;
+}
+.cleaning-booking {
+  width: 60%;
+  font-family: "Miriam Libre", sans-serif;
+  margin: auto;
+  background: #ffcf1b;
+  color: #222552;
+  padding: 10px 50px;
+  overflow-y: auto;
+  max-height: 100vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.booking-left::-webkit-scrollbar {
+  display: none;
+}
+.cleaning-booking h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: "Montserrat Alternates", Sans-Serif;
+  font-weight: 800;
+  color: #222552;
+}
+
+.field {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field input,
+.field select {
+  width: 80%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.extra-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.extra-card:hover {
+  background: #f5f7fa;
+}
+
+.extra-card input {
+  margin-right: 5px;
+}
+
+.price-box {
+  background: #f5f7fa;
+  padding: 18px;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.price-animate {
+  transform: scale(1.05);
+}
+
+.order-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: #386eda;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.order-btn:hover {
+  background: #239a5f;
+}
+
+.success {
+  margin-top: 15px;
+  text-align: center;
+  color: #386eda;
+}
+
+.calendar {
+  width: 50%;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #386eda;
+  color: #fff;
+  font-size: 26px;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #eee;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  padding: 10px;
+}
+
+.calendar-dates div {
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.calendar-dates div:hover {
+  background: #f0f0f0;
+}
+
+.today {
+  background: #386eda;
+  color: #fff;
+}
+
+.disabled {
+  background-color: #ccc;
+  color: #fff;
+  pointer-events: none;
+}
+
+.selected {
+  background: #ffd500;
+  color: #fff;
+}
+.booking-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+
+  font-family: "Miriam Libre", sans-serif;
+}
+
+.right {
+  height: 100%;
+  position: sticky;
+  width: 40%;
+  margin: 50 auto;
+  padding: 40px 50px;
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.right h2,
+.right p,
+.right div {
+  font-family: "Montserrat Alternates", Sans-Serif;
+  font-weight: 800;
+  color: #222552;
+}
+.order-btn {
+  width: 50%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #386eda;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.order-btn:hover {
+  background: #9fb7f3ab;
+}
+#order-services {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+#order-services li {
+  background: #f7f7f7;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#order-services li::before {
+  content: "✓";
+  color: #4caf50;
+  margin-right: 8px;
+}
