@@ -241,3 +241,31 @@ body {
   color: #4caf50;
   margin-right: 8px;
 }
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow: auto;
+  }
+  .cleaning-booking {
+    width: auto;
+    font-family: "Miriam Libre", sans-serif;
+    margin: auto;
+    background: #ffcf1b;
+    color: #222552;
+    /* padding: 10px 50px; */
+    overflow-y: auto;
+    max-height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .right {
+    width: auto;
+  }
+  .calendar {
+    width: auto;
+  }
+  .order__wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+}
