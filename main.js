@@ -121,15 +121,17 @@ function renderCalendar() {
 // =======================
 // 🔄 ПЕРЕКЛЮЧЕНИЕ МЕСЯЦЕВ
 // =======================
-document.getElementById("prev")?.addEventListener("click", () => {
-  date.setMonth(date.getMonth() - 1);
-  renderCalendar();
-});
-
-document.getElementById("next")?.addEventListener("click", () => {
+document.getElementById("next").onclick = () => {
+  date.setDate(1); // 👈 ВАЖНО
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
-});
+};
+
+document.getElementById("prev").onclick = () => {
+  date.setDate(1); // 👈 ВАЖНО
+  date.setMonth(date.getMonth() - 1);
+  renderCalendar();
+};
 
 // =======================
 // 📥 ЗАГРУЗКА GOOGLE SHEETS
@@ -139,39 +141,46 @@ async function loadBusyDates() {
     const res = await fetch(
       "https://docs.google.com/spreadsheets/d/1vMv8T8Y_XTfj6ZqFZUlSMEh-bEHuVSbQK4KfAC_S5Mg/export?format=csv"
     );
-    const data = await res.text();
+    const text = await res.text();
 
-    const rows = data.split("\n").slice(1);
+    console.log("CSV:", text); // 👈 смотри что реально приходит
+
+    const rows = text.split("\n").slice(1);
 
     busyMap = {};
 
     rows.forEach((row) => {
       if (!row.trim()) return;
 
-      const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+      const cols = row.split(",");
 
-      const dateStr = cols[0]?.replace(/"/g, "").trim();
-      const status = cols[5]?.replace(/"/g, "").trim();
+      let dateStr = cols[0]?.replace(/"/g, "").trim();
+      let status = cols[5]?.replace(/"/g, "").trim();
 
-      if (dateStr && status) {
-        const parts = dateStr.split(".");
+      if (!dateStr) return;
 
-        if (parts.length === 3) {
-          const day = parseInt(parts[0]);
-          const month = parseInt(parts[1]) - 1;
-          const year = parseInt(parts[2]);
+      // 👇 поддержка разных форматов
+      let d, m, y;
 
-          const d = new Date(year, month, day);
-          d.setHours(0, 0, 0, 0);
-
-          busyMap[d.getTime()] = parseInt(status) || 0;
-        }
+      if (dateStr.includes(".")) {
+        [d, m, y] = dateStr.split(".");
+      } else if (dateStr.includes("/")) {
+        [m, d, y] = dateStr.split("/");
+      } else {
+        return;
       }
+
+      const dt = new Date(y, m - 1, d);
+      dt.setHours(0, 0, 0, 0);
+
+      busyMap[dt.getTime()] = parseInt(status) || 0;
     });
 
+    console.log("busyMap:", busyMap);
+
     renderCalendar();
-  } catch (e) {
-    console.log("Ошибка загрузки таблицы", e);
+  } catch (err) {
+    console.log("Ошибка загрузки:", err);
   }
 }
 
